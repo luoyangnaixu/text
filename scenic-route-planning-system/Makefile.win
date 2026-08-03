@@ -1,0 +1,40 @@
+# Project: 项目1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o menu.o travels.o global.o graph.o
+LINKOBJ  = main.o menu.o travels.o global.o graph.o
+LIBS     = -L"E:/Program Files/Dev-Cpp/MinGW64/lib" -L"E:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"E:/Program Files/Dev-Cpp/MinGW64/include" -I"E:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Program Files/Dev-Cpp/MinGW64/include" -I"E:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 项目1.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CPP) -c main.c -o main.o $(CXXFLAGS)
+
+menu.o: menu.c
+	$(CPP) -c menu.c -o menu.o $(CXXFLAGS)
+
+travels.o: travels.c
+	$(CPP) -c travels.c -o travels.o $(CXXFLAGS)
+
+global.o: global.c
+	$(CPP) -c global.c -o global.o $(CXXFLAGS)
+
+graph.o: graph.c
+	$(CPP) -c graph.c -o graph.o $(CXXFLAGS)
